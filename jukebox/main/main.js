@@ -15,11 +15,11 @@ klaw(directoryToExplore)
         items.push(item.path)
     })
     .on('end', function () {
-        console.log(items);
+        console.log("Server running on localhost:3000") 
     })
     .on('error', function (err, item) {
-        console.log(err.message)
-        console.log(item.path) // the file the error occurred on
+        //console.log(err.message)
+        //console.log("Server running on localhost:3000") // the file the error occurred on
     });
     
 app.get('/', function (req, res) {
