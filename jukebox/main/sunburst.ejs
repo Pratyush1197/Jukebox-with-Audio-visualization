@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    
+</head>
+<body>
+        <button onclick="wave.play();"type="button"  class="btn  btn-fresh text-capitalize">Play</button>
+        <button  type="button" class="btn  btn-sunny text-capitalize" onclick="window.location.href = 'http://localhost:3000/circular-wave';">Circular-wave</button>           
+    <div class="primary-nav">        
+            <nav role="navigation" class="menu">
+                <a href="#" class="logotype">JUKE<span>BOX</span></a>
+                <div class="overflow-container">
+                        
+                       <ul>
+                       <%
+                          for (var i = 0; i < items.length; i++){
+                         var value = '';     
+                          value = items[i].split('/')[6] %>
+                        <li id="qw" onclick="wave.play();" data-val='<%= value %>'class="editField"><%= value %></li>
+                        <% } %>
+                       </ul>
+        </div>
+            </nav>
+        </div>
+    <div id="chart-container" style="width: 100%; top: 00px; height: 100vh; padding: none; position: absolute;">
+   </div>
+   <script src="main.js"> </script>
+    <script src="/circular-audio-wave.min.js"></script>
+    <script>     
+            let wave = new CircularAudioWave(document.getElementById('chart-container'), {mode: 'sunburst'});
+         
+                $( "li" ).click(function() { 
+                
+             var sel2 = 'audio/audio.mp3';  
+             var sel1 =  ($(this).data('val'));     
+             sel2 = 'audio/' + sel1; 
+        wave.loadAudio(sel2);       
+      
+                });
+         
+            
+    </script>
+</body>
+
+</html>
